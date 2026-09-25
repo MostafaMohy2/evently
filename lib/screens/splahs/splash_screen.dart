@@ -2,6 +2,7 @@ import 'package:evently/core/config/app_config.dart';
 import 'package:evently/core/utils/app_assets.dart';
 import 'package:evently/screens/setup/setup_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class SplashScreen extends StatefulWidget {
   static const String route = '/splash';
@@ -22,6 +23,7 @@ class _SplashScreenState extends State<SplashScreen> {
 
   @override
   Widget build(BuildContext context) {
+    var provider = Provider.of<AppConfig>(context);
     return Scaffold(
       body: SafeArea(
         child: Column(
@@ -29,14 +31,14 @@ class _SplashScreenState extends State<SplashScreen> {
             Expanded(
               child: Center(
                 child: Image.asset(
-                  AppConfig.thememode == ThemeMode.light
+                  provider.thememode == ThemeMode.light
                       ? AppAssets.logoLight
                       : AppAssets.logoDark,
                 ),
               ),
             ),
             Image.asset(
-              AppConfig.thememode == ThemeMode.light
+              provider.thememode == ThemeMode.light
                   ? AppAssets.brandingLight
                   : AppAssets.brandingDark,
               width: MediaQuery.of(context).size.width * 0.5,
