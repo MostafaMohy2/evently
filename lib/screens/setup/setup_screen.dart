@@ -1,5 +1,6 @@
 import 'package:evently/core/l10n/app_localizations.dart';
 import 'package:evently/core/theme/app_colors.dart';
+import 'package:evently/screens/onboarding/on_boarding_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -67,7 +68,7 @@ class _SetupScreenState extends State<SetupScreen> {
                     Text(
                       locale.english,
                       style: Theme.of(context).textTheme.titleMedium!.copyWith(
-                        color: _getChipColor(provider.locale == 'en',),
+                        color: _getChipColor(provider.locale == 'en'),
                       ),
                     ),
                     () {
@@ -79,7 +80,7 @@ class _SetupScreenState extends State<SetupScreen> {
                     Text(
                       locale.arabic,
                       style: Theme.of(context).textTheme.titleMedium!.copyWith(
-                        color: _getChipColor(provider.locale == 'ar',),
+                        color: _getChipColor(provider.locale == 'ar'),
                       ),
                     ),
                     () {
@@ -98,14 +99,24 @@ class _SetupScreenState extends State<SetupScreen> {
                   ),
                   Spacer(),
                   _buildOptionChip(
-                    Icon(Icons.light_mode_outlined, color: _getChipColor(provider.thememode == ThemeMode.light)),
+                    Icon(
+                      Icons.light_mode_outlined,
+                      color: _getChipColor(
+                        provider.thememode == ThemeMode.light,
+                      ),
+                    ),
                     () {
                       provider.changeTheme(ThemeMode.light);
                     },
                     provider.thememode == ThemeMode.light,
                   ),
                   _buildOptionChip(
-                    Icon(Icons.dark_mode_outlined, color: _getChipColor(provider.thememode == ThemeMode.dark)),
+                    Icon(
+                      Icons.dark_mode_outlined,
+                      color: _getChipColor(
+                        provider.thememode == ThemeMode.dark,
+                      ),
+                    ),
                     () {
                       provider.changeTheme(ThemeMode.dark);
                     },
@@ -113,7 +124,17 @@ class _SetupScreenState extends State<SetupScreen> {
                   ),
                 ],
               ),
-              FilledButton(onPressed: () {}, child: Text(locale.letsStart)),
+              FilledButton(
+                onPressed: () {
+                  Navigator.pushReplacementNamed(
+                    context,
+                    OnBoardingScreen.route,
+                  );
+                },
+                child: Text(locale.letsStart, style: Theme.of(context).textTheme.titleLarge!.copyWith(
+                  color: Colors.white
+                ),),
+              ),
             ],
           ),
         ),

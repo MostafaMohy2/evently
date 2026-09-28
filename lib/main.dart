@@ -6,6 +6,8 @@ import 'package:provider/provider.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 
 import 'core/l10n/app_localizations.dart';
+import 'screens/auth/screens/login_screen.dart';
+import 'screens/onboarding/on_boarding_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -34,6 +36,8 @@ class MyApp extends StatelessWidget {
           routes: {
             SplashScreen.route: (_) => SplashScreen(),
             SetupScreen.route: (_) => SetupScreen(),
+            OnBoardingScreen.route: (_) => OnBoardingScreen(),
+            LoginScreen.route: (_) => LoginScreen(),
           },
           initialRoute: SplashScreen.route,
         ),
