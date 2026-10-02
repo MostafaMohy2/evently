@@ -14,4 +14,9 @@ class AppAssets {
   static const String onboarding1Dark = 'assets/images/onboarding1_dark.png';
   static const String onboarding3Dark = 'assets/images/onboarding3_dark.png';
   static const String onboarding2Dark = 'assets/images/onboarding2_dark.png';
+
+  static const String googleLogo = 'assets/images/google_logo.png';
+
+  static const String forgetPassowrdLight = 'assets/images/forgetPassword_light.png';
+  static const String forgetPassowrdDark = 'assets/images/forgetPassword_dark.png';
 }

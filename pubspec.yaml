@@ -39,6 +39,9 @@ dependencies:
   flutter_localizations:
     sdk: flutter
   smooth_page_indicator: ^3.0.0
+  shared_preferences: ^2.5.5
+  firebase_core: ^4.15.0
+  firebase_auth: ^6.7.0
 
 dev_dependencies:
   flutter_test:

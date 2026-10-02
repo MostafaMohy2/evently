@@ -23,7 +23,9 @@ class AppTheme {
       backgroundColor: appColors.backgroundColor,
       foregroundColor: appColors.mainTextColor,
     ),
+
     scaffoldBackgroundColor: appColors.backgroundColor,
+
     filledButtonTheme: FilledButtonThemeData(
       style: FilledButton.styleFrom(
         padding: EdgeInsets.all(16),
@@ -32,8 +34,54 @@ class AppTheme {
         ),
         minimumSize: Size(double.infinity, 56),
         textStyle: TextStyle(fontSize: 20, fontWeight: .bold),
+        foregroundColor: appColors.mainTextColor
       ),
     ),
+    outlinedButtonTheme: OutlinedButtonThemeData(
+      style: OutlinedButton.styleFrom(
+        padding: EdgeInsets.all(16),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadiusGeometry.circular(16),
+        ),
+        minimumSize: Size(double.infinity, 56),
+        backgroundColor: appColors.mainColor.withAlpha(16),
+        textStyle: TextStyle(fontSize: 20, fontWeight: .bold),
+        foregroundColor: appColors.mainTextColor
+      ),
+    ),
+
+    inputDecorationTheme: InputDecorationTheme(
+      filled: true,
+      fillColor: appColors.inputColor,
+      contentPadding: EdgeInsets.all(16),
+      border: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(16),
+        borderSide: BorderSide.none,
+      ),
+      prefixIconColor: appColors.mainTextColor,
+      suffixIconColor: appColors.mainTextColor,
+      enabledBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(16),
+        borderSide: BorderSide(width: 1, color: appColors.strokeColor),
+      ),
+      disabledBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(16),
+        borderSide: BorderSide(width: 1, color: appColors.strokeColor),
+      ),
+      focusedBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(16),
+        borderSide: BorderSide(width: 1, color: appColors.strokeColor),
+      ),
+      errorBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(16),
+        borderSide: BorderSide(width: 1, color: appColors.errorColor),
+      ),
+      focusedErrorBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(16),
+        borderSide: BorderSide(width: 1, color: appColors.errorColor),
+      ),
+    ),
+
     textTheme: TextTheme(
       displayLarge: TextStyle(color: appColors.mainTextColor),
       displayMedium: TextStyle(color: appColors.mainTextColor),
