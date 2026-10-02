@@ -1,5 +1,6 @@
 import 'package:evently/core/config/app_config.dart';
 import 'package:evently/core/l10n/app_localizations.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -35,7 +36,14 @@ class ForgetPasswordScreen extends StatelessWidget {
                   : AppAssets.forgetPassowrdDark,
             ),
             FilledButton(
-              onPressed: () {},
+              onPressed: () async {
+                User? user = FirebaseAuth.instance.currentUser;
+                await FirebaseAuth.instance.setLanguageCode(
+                  provider.locale == 'en' ? 'en' : 'ar',
+                );
+                await user?.sendEmailVerification();
+                Navigator.pop(context);
+              },
               child: Text(
                 locale.resetPassword,
                 style: Theme.of(
