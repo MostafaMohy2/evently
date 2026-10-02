@@ -63,4 +63,103 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get getStarted => 'ابدأ الآن';
+
+  @override
+  String get loginToYourAccount => 'تسجيل الدخول إلى حسابك';
+
+  @override
+  String get enterYourEmail => 'أدخل بريدك الإلكتروني';
+
+  @override
+  String get enterYourPassword => 'أدخل كلمة المرور';
+
+  @override
+  String get forgotPassword => 'هل نسيت كلمة المرور؟';
+
+  @override
+  String get login => 'تسجيل الدخول';
+
+  @override
+  String get dontHaveAnAccount => 'ليس لديك حساب؟';
+
+  @override
+  String get signUp => 'إنشاء حساب';
+
+  @override
+  String get or => 'أو';
+
+  @override
+  String get loginWithGoogle => 'تسجيل الدخول باستخدام Google';
+
+  @override
+  String get createYourAccount => 'أنشئ حسابك';
+
+  @override
+  String get enterYourName => 'أدخل اسمك';
+
+  @override
+  String get confirmYourPassword => 'تأكيد كلمة المرور';
+
+  @override
+  String get alreadyHaveAnAccount => 'لديك حساب بالفعل؟';
+
+  @override
+  String get signUpWithGoogle => 'إنشاء حساب باستخدام Google';
+
+  @override
+  String get forgotPasswordTitle => 'نسيت كلمة المرور';
+
+  @override
+  String get resetPassword => 'إعادة تعيين كلمة المرور';
+
+  @override
+  String get invalidName => 'اٍسم غير صالح';
+
+  @override
+  String get nameCantBeEmpty => 'لا يمكن ان يكون الاٍسم فارغاََ';
+
+  @override
+  String get nameisinInvalidFormat => 'صيغة الاٍسم غير صالحة';
+
+  @override
+  String get invalidEmail => 'بريد إلكتروني غير صالح';
+
+  @override
+  String get emailCantBeEmpty => 'لا يمكن أن يكون البريد الإلكتروني فارغاً';
+
+  @override
+  String get emailIsInInvalidFormat => 'يرجى إدخال بريد إلكتروني بتنسيق صحيح';
+
+  @override
+  String get invalidPassword => 'كلمة مرور غير صالحة';
+
+  @override
+  String get passwordCantBeEmpty => 'لا يمكن أن تكون كلمة المرور فارغة';
+
+  @override
+  String get passwordIsInInvalidFormat =>
+      'يجب أن لا تقل كلمة المرور عن 8 أحرف وتحتوي على حرف كبير، حرف صغير، رقم، ورمز خاص';
+
+  @override
+  String get invalidPasswordConfirmation => 'تأكيد كلمة المرور غير صالح';
+
+  @override
+  String get passwordConfirmationCantBeEmpty =>
+      'لا يمكن أن يكون تأكيد كلمة المرور فارغاً';
+
+  @override
+  String get passwordsDoNotMatch => 'كلمتا المرور غير متطابقتين';
+
+  @override
+  String get accountCreatedSuccessfully => 'تم إنشاء الحساب بنجاح';
+
+  @override
+  String get accountAlreadyExists =>
+      'يوجد حساب بالفعل باستخدام هذا البريد الإلكتروني.';
+
+  @override
+  String get loggedInSuccessfully => 'تم تسجيل الدخول بنجاح';
+
+  @override
+  String get passwordTooWeak => 'كلمة المرور التي تم إدخالها ضعيفة جدًا.';
 }

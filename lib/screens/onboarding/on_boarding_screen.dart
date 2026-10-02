@@ -7,7 +7,7 @@ import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 import '../../core/config/app_config.dart';
 import '../../core/utils/app_assets.dart';
-import '../auth/screens/login_screen.dart';
+import '../auth/login/login_screen.dart';
 import 'widgets/custom_buttons.dart';
 
 class OnBoardingScreen extends StatefulWidget {
@@ -41,7 +41,6 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
               Row(
                 mainAxisAlignment: .spaceBetween,
                 children: [
-                  // todo backButton based on page index
                   Visibility(
                     visible: pageIndex != 0,
                     child: GestureDetector(
@@ -72,17 +71,19 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                         : AppAssets.logoDark,
                     width: MediaQuery.of(context).size.width * .4,
                   ),
-                  //todo Skip Button
-                  GestureDetector(
-                    onTap: () {
-                      imgController.jumpToPage(lastPageIndex);
-                      textController.jumpToPage(lastPageIndex);
-                    },
-                    child: CustomButton(
-                      provider: provider,
-                      child: Text(
-                        locale.skip,
-                        style: Theme.of(context).textTheme.titleLarge,
+                  Visibility(
+                    visible: pageIndex != lastPageIndex,
+                    child: GestureDetector(
+                      onTap: () {
+                        imgController.jumpToPage(lastPageIndex);
+                        textController.jumpToPage(lastPageIndex);
+                      },
+                      child: CustomButton(
+                        provider: provider,
+                        child: Text(
+                          locale.skip,
+                          style: Theme.of(context).textTheme.titleLarge,
+                        ),
                       ),
                     ),
                   ),

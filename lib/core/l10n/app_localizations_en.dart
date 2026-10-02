@@ -63,4 +63,103 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get getStarted => 'Get Started';
+
+  @override
+  String get loginToYourAccount => 'Login to your account';
+
+  @override
+  String get enterYourEmail => 'Enter your email';
+
+  @override
+  String get enterYourPassword => 'Enter your password';
+
+  @override
+  String get forgotPassword => 'Forgot Password?';
+
+  @override
+  String get login => 'Login';
+
+  @override
+  String get dontHaveAnAccount => 'Don\'t have an account?';
+
+  @override
+  String get signUp => 'Signup';
+
+  @override
+  String get or => 'Or';
+
+  @override
+  String get loginWithGoogle => 'Login with Google';
+
+  @override
+  String get createYourAccount => 'Create your account';
+
+  @override
+  String get enterYourName => 'Enter your name';
+
+  @override
+  String get confirmYourPassword => 'Confirm your password';
+
+  @override
+  String get alreadyHaveAnAccount => 'Already have an account?';
+
+  @override
+  String get signUpWithGoogle => 'Sign up with Google';
+
+  @override
+  String get forgotPasswordTitle => 'Forget Password';
+
+  @override
+  String get resetPassword => 'Reset password';
+
+  @override
+  String get invalidName => 'Invalid Name';
+
+  @override
+  String get nameCantBeEmpty => 'Name Can\'t Be Empty';
+
+  @override
+  String get nameisinInvalidFormat => 'Name is in Invalid Format';
+
+  @override
+  String get invalidEmail => 'Invalid email';
+
+  @override
+  String get emailCantBeEmpty => 'Email can\'t be empty';
+
+  @override
+  String get emailIsInInvalidFormat => 'Please enter a valid email address';
+
+  @override
+  String get invalidPassword => 'Invalid password';
+
+  @override
+  String get passwordCantBeEmpty => 'Password can\'t be empty';
+
+  @override
+  String get passwordIsInInvalidFormat =>
+      'Password must be at least 8 characters and include uppercase, lowercase, number, and special character';
+
+  @override
+  String get invalidPasswordConfirmation => 'Invalid password confirmation';
+
+  @override
+  String get passwordConfirmationCantBeEmpty =>
+      'Password confirmation can\'t be empty';
+
+  @override
+  String get passwordsDoNotMatch => 'Passwords do not match';
+
+  @override
+  String get accountCreatedSuccessfully => 'Account Created Successfully';
+
+  @override
+  String get accountAlreadyExists =>
+      'The account already exists for that email.';
+
+  @override
+  String get loggedInSuccessfully => 'Logged In Successfully';
+
+  @override
+  String get passwordTooWeak => 'The password provided is too weak.';
 }
