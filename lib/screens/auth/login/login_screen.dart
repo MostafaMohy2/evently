@@ -7,6 +7,7 @@ import 'package:provider/provider.dart';
 
 import '../../../core/l10n/app_localizations.dart';
 import '../../../core/utils/app_assets.dart';
+import '../../home/home_screen.dart';
 import '../forget_password/forget_password_screen.dart';
 import '../signup/signup_screen.dart';
 
@@ -129,27 +130,19 @@ class _LoginScreenState extends State<LoginScreen> {
                           emailController.text,
                           passwordController.text,
                         );
-                        ScaffoldMessenger.of(context).showSnackBar(
-                          SnackBar(
-                            content: Text(locale.loggedInSuccessfully),
-                          ),
+                        Navigator.pushReplacementNamed(
+                          context,
+                          HomeScreen.route,
                         );
-                        //todo navigate to home screen
                       } on FirebaseAuthException catch (e) {
                         if (e.code == 'weak-password') {
                           ScaffoldMessenger.of(context).showSnackBar(
-                            SnackBar(
-                              content: Text(
-                                locale.passwordTooWeak,
-                              ),
-                            ),
+                            SnackBar(content: Text(locale.passwordTooWeak)),
                           );
                         } else if (e.code == 'email-already-in-use') {
                           ScaffoldMessenger.of(context).showSnackBar(
                             SnackBar(
-                              content: Text(
-                                locale.accountAlreadyExists,
-                              ),
+                              content: Text(locale.accountAlreadyExists),
                             ),
                           );
                         }
@@ -208,7 +201,11 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
 
                 OutlinedButton(
-                  onPressed: () {},
+                  onPressed: () async {
+                    await authService.signInWithGoogle();
+
+                    Navigator.pushReplacementNamed(context, HomeScreen.route);
+                  },
                   child: Row(
                     mainAxisAlignment: .center,
                     children: [

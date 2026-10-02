@@ -7,6 +7,7 @@ import 'package:provider/provider.dart';
 import '../../../core/config/app_config.dart';
 import '../../../core/l10n/app_localizations.dart';
 import '../../../core/utils/app_assets.dart';
+import '../../home/home_screen.dart';
 
 class SignupScreen extends StatefulWidget {
   static const String route = '/signup';
@@ -224,7 +225,10 @@ class _SignupScreenState extends State<SignupScreen> {
                 ),
 
                 OutlinedButton(
-                  onPressed: () {},
+                  onPressed: () async {
+                    await authService.signInWithGoogle();
+                    Navigator.pushReplacementNamed(context, HomeScreen.route);
+                  },
                   child: Row(
                     mainAxisAlignment: .center,
                     children: [
