@@ -1,8 +1,6 @@
-import 'package:evently/core/config/app_config.dart';
-import 'package:evently/core/l10n/app_localizations.dart';
+import 'package:evently/core/utils/build_context_extensions.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 
 import '../../../core/utils/app_assets.dart';
 
@@ -12,14 +10,14 @@ class ForgetPasswordScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var provider = Provider.of<AppConfig>(context);
-    final AppLocalizations locale = AppLocalizations.of(context)!;
+    final provider = context.appConfig;
+    final locale = context.locale;
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
         title: Text(
           'Forget Passowrd',
-          style: Theme.of(context).textTheme.titleMedium,
+          style: context.textTheme.titleMedium,
         ),
       ),
       body: Padding(
@@ -42,13 +40,12 @@ class ForgetPasswordScreen extends StatelessWidget {
                   provider.locale == 'en' ? 'en' : 'ar',
                 );
                 await user?.sendEmailVerification();
-                Navigator.pop(context);
+                if (!context.mounted) return;
+                context.pop();
               },
               child: Text(
                 locale.resetPassword,
-                style: Theme.of(
-                  context,
-                ).textTheme.titleLarge!.copyWith(color: Colors.white),
+                style: context.textTheme.titleLarge!.copyWith(color: Colors.white),
               ),
             ),
           ],

@@ -391,6 +391,30 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'The password provided is too weak.'**
   String get passwordTooWeak;
+
+  /// No description provided for @home.
+  ///
+  /// In en, this message translates to:
+  /// **'Home'**
+  String get home;
+
+  /// No description provided for @favorite.
+  ///
+  /// In en, this message translates to:
+  /// **'Favorite'**
+  String get favorite;
+
+  /// No description provided for @profile.
+  ///
+  /// In en, this message translates to:
+  /// **'Profile'**
+  String get profile;
+
+  /// No description provided for @welocmeBack.
+  ///
+  /// In en, this message translates to:
+  /// **'welocme Back ✨'**
+  String get welocmeBack;
 }
 
 class _AppLocalizationsDelegate

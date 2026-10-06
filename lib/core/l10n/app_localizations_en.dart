@@ -162,4 +162,16 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get passwordTooWeak => 'The password provided is too weak.';
+
+  @override
+  String get home => 'Home';
+
+  @override
+  String get favorite => 'Favorite';
+
+  @override
+  String get profile => 'Profile';
+
+  @override
+  String get welocmeBack => 'welocme Back ✨';
 }

@@ -1,5 +1,5 @@
-import 'package:evently/core/l10n/app_localizations.dart';
 import 'package:evently/core/utils/app_assets.dart';
+import 'package:evently/core/utils/build_context_extensions.dart';
 import 'package:flutter/material.dart';
 
 class Onboarding {
@@ -16,7 +16,7 @@ class Onboarding {
   });
 
   static List<Onboarding> onboarding(BuildContext context) {
-    final AppLocalizations locale = AppLocalizations.of(context)!;
+    final locale = context.locale;
     return [
       Onboarding(
         imageLight: AppAssets.onboarding1Light,

@@ -11,6 +11,9 @@ class AppConfig extends ChangeNotifier {
 
   String locale;
 
+  bool get isLight => thememode == ThemeMode.light;
+  bool get isDark => thememode == ThemeMode.dark;
+
   AppConfig(this.locale, this.thememode);
 
   Future<void> changeTheme(ThemeMode theme) async {

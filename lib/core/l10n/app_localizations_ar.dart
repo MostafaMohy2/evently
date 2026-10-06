@@ -162,4 +162,16 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get passwordTooWeak => 'كلمة المرور التي تم إدخالها ضعيفة جدًا.';
+
+  @override
+  String get home => 'الرئيسية';
+
+  @override
+  String get favorite => 'المفضلة';
+
+  @override
+  String get profile => 'الملف';
+
+  @override
+  String get welocmeBack => 'مرحبا بعودتك ✨';
 }

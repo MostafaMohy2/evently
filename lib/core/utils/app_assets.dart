@@ -19,4 +19,19 @@ class AppAssets {
 
   static const String forgetPassowrdLight = 'assets/images/forgetPassword_light.png';
   static const String forgetPassowrdDark = 'assets/images/forgetPassword_dark.png';
+
+  static const String birthdayLight = 'assets/images/Birthday-light.png';
+  static const String birthdayDark = 'assets/images/Birthday_dark.png';
+
+  static const String bookClubLight = 'assets/images/Book Club_light.png';
+  static const String bookClubDark = 'assets/images/Book Club_dark.png';
+
+  static const String exhibitionLight = 'assets/images/Exhibition_light.png';
+  static const String exhibitionDark = 'assets/images/Exhibition_dark.png';
+
+  static const String meetingLight = 'assets/images/Meeting_light.png';
+  static const String meetingDark = 'assets/images/Meeting_dark.png';
+
+  static const String sportLight = 'assets/images/Sport_light.png';
+  static const String sportDark = 'assets/images/Sport_dakr.png';
 }
