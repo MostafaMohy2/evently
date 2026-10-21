@@ -1,0 +1,39 @@
+class AppAssets {
+  static const String logoLight = 'assets/images/logo.png';
+  static const String logoDark = 'assets/images/logo_dark.png';
+  static const String brandingLight = 'assets/images/branding_light.png';
+  static const String brandingDark = 'assets/images/branding_dark.png';
+
+  static const String setupLight = 'assets/images/setup_light.png';
+  static const String setupDark = 'assets/images/setup_dark.png';
+
+  static const String onboarding1Light = 'assets/images/onboarding1_light.png';
+  static const String onboarding2Light = 'assets/images/onboarding2_light.png';
+  static const String onboarding3Light = 'assets/images/onboarding3_light.png';
+
+  static const String onboarding1Dark = 'assets/images/onboarding1_dark.png';
+  static const String onboarding3Dark = 'assets/images/onboarding3_dark.png';
+  static const String onboarding2Dark = 'assets/images/onboarding2_dark.png';
+
+  static const String googleLogo = 'assets/images/google_logo.png';
+
+  static const String forgetPassowrdLight = 'assets/images/forgetPassword_light.png';
+  static const String forgetPassowrdDark = 'assets/images/forgetPassword_dark.png';
+
+  static const String birthdayLight = 'assets/images/Birthday-light.png';
+  static const String birthdayDark = 'assets/images/Birthday_dark.png';
+
+  static const String bookClubLight = 'assets/images/Book Club_light.png';
+  static const String bookClubDark = 'assets/images/Book Club_dark.png';
+
+  static const String exhibitionLight = 'assets/images/Exhibition_light.png';
+  static const String exhibitionDark = 'assets/images/Exhibition_dark.png';
+
+  static const String meetingLight = 'assets/images/Meeting_light.png';
+  static const String meetingDark = 'assets/images/Meeting_dark.png';
+
+  static const String sportLight = 'assets/images/Sport_light.png';
+  static const String sportDark = 'assets/images/Sport_dakr.png';
+
+  static const String route = 'assets/images/route.png';
+}
