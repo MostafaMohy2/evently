@@ -2,6 +2,7 @@ import 'package:evently/core/config/app_config.dart';
 import 'package:evently/core/utils/app_assets.dart';
 import 'package:evently/core/utils/build_context_extensions.dart';
 import 'package:evently/core/utils/widget_extensions.dart';
+import 'package:evently/screens/auth/login/login_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -85,6 +86,7 @@ class ProfileTab extends StatelessWidget {
                   IconButton(
                     onPressed: () {
                       FirebaseAuth.instance.signOut();
+                      Navigator.pushReplacementNamed(context, LoginScreen.route);
                     },
                     icon: Icon(Icons.logout_outlined, color: Colors.red),
                   ),
