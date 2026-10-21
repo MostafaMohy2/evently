@@ -144,9 +144,11 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                             style: context.textTheme.titleLarge,
                           ),
                         ),
-                        Text(
-                          onboards[index].description,
-                          style: context.textTheme.bodyLarge,
+                        Expanded(
+                          child: Text(
+                            onboards[index].description,
+                            style: context.textTheme.bodyLarge,
+                          ),
                         ),
                       ],
                     );

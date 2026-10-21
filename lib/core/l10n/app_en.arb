@@ -51,5 +51,10 @@
   "home":"Home",
   "favorite": "Favorite",
   "profile": "Profile",
-  "welocmeBack": "welocme Back ✨"
+  "welcomeBack": "Welcome Back ✨",
+  "user": "User",
+  "email": "Email",
+  "darkMode": "Dark Mode",
+  "lightMode": "Light Mode",
+  "signOut": "Sign Out"
 }

@@ -1,9 +1,11 @@
 import 'package:evently/core/utils/build_context_extensions.dart';
 import 'package:evently/core/utils/icons_extensions.dart';
-import 'package:evently/core/utils/number_extensions.dart';
-import 'package:evently/core/utils/widget_extensions.dart';
+import 'package:evently/screens/home/tabs/favorite_tab.dart';
 import 'package:evently/screens/home/tabs/home_tab.dart';
 import 'package:flutter/material.dart';
+
+import '../event_management/event_management_screen.dart';
+import 'tabs/profile_tab.dart';
 
 class HomeScreen extends StatefulWidget {
   static const String route = '/home';
@@ -18,11 +20,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final tabs = [
-      HomeTab(),
-      _buildPlaceholderTab(context.colorScheme.tertiary, 'Favorites Tab'),
-      _buildPlaceholderTab(context.colorScheme.secondary, 'Profile Tab'),
-    ];
+    List<Widget> tabs = [HomeTab(), FavoriteTab(), ProfileTab()];
 
     return Scaffold(
       body: tabs[selectedIndex],
@@ -52,30 +50,10 @@ class _HomeScreenState extends State<HomeScreen> {
         ],
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {},
+        onPressed: () {
+          Navigator.pushNamed(context, EventManagementScreen.route);
+        },
         child: Icons.add.toIcon,
-      ),
-    );
-  }
-
-  Widget _buildPlaceholderTab(Color color, String label) {
-    return Container(
-      color: color,
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Text(
-            label,
-            style: context.textTheme.headlineMedium?.copyWith(
-              color: context.colorScheme.onError,
-            ),
-          ),
-          16.verticalSpace,
-          Text(
-            'Coming soon...',
-            style: context.textTheme.bodyLarge,
-          ).allPadding(24),
-        ],
       ),
     );
   }

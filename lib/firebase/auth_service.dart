@@ -10,13 +10,12 @@ class AuthService {
     String password,
     String userName,
   ) async {
-    await firebaseAuth
-        .createUserWithEmailAndPassword(email: email, password: password)
-        .then((credential) async {
-          await credential.user?.updateDisplayName(userName);
-        });
-
-    return firebaseAuth.currentUser;
+    final credential = await firebaseAuth.createUserWithEmailAndPassword(
+      email: email,
+      password: password,
+    );
+    await credential.user?.updateDisplayName(userName);
+    return credential.user;
   }
 
   Future<User?> signInWithEmailAndPassword(

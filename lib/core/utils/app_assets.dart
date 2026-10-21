@@ -34,4 +34,6 @@ class AppAssets {
 
   static const String sportLight = 'assets/images/Sport_light.png';
   static const String sportDark = 'assets/images/Sport_dakr.png';
+
+  static const String route = 'assets/images/route.png';
 }

@@ -11,4 +11,8 @@ extension WidgetExtensions on Widget {
     padding: EdgeInsets.symmetric(horizontal: padding),
     child: this,
   );
+  Widget clip(double radius)=>ClipRRect(
+    borderRadius: BorderRadiusGeometry.circular(radius),
+    child: this,
+  );
 }
