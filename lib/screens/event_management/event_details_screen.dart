@@ -47,7 +47,6 @@ class EventDetailsScreen extends StatelessWidget {
         padding: const EdgeInsets.symmetric(horizontal: 16),
         children: [
           16.verticalSpace,
-          // 1. Category Banner Image
           ClipRRect(
             borderRadius: BorderRadius.circular(16),
             child: AspectRatio(
@@ -152,9 +151,8 @@ class EventDetailsScreen extends StatelessWidget {
       postAction: () async {
         context.showDialogUtils();
         await FirebaseDatabase().deleteEvent(event.id!);
-        //ignore: use_build_context_synchronously
+        if (!context.mounted) return;
         context.pop();
-        //ignore: use_build_context_synchronously
         context.pop();
       },
     );

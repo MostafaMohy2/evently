@@ -108,9 +108,8 @@ class _EventManagementScreenState extends State<EventManagementScreen> {
               } else {
                 await FirebaseDatabase().addEvent(eventToSave);
               }
-              //ignore: use_build_context_synchronously
+              if (!context.mounted) return;
               context.pop();
-              //ignore: use_build_context_synchronously
               context.pop();
             },
           );

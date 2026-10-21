@@ -5,7 +5,7 @@ class Event {
   String? id;
   String? uid;
   String? title;
-  String? titleLower; // Stored for case-insensitive search
+  String? titleLower;
   String? descritpion;
   DateTime? dateTime;
   TimeOfDay? timeOfDay;
