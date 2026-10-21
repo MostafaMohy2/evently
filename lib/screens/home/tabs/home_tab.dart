@@ -1,11 +1,18 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:evently/core/models/event.dart';
 import 'package:evently/core/theme/app_colors.dart';
 import 'package:evently/core/utils/build_context_extensions.dart';
 import 'package:evently/core/utils/icons_extensions.dart';
 import 'package:evently/core/utils/number_extensions.dart';
 import 'package:evently/core/utils/widget_extensions.dart';
-import 'package:evently/screens/home/models/category.dart';
+import 'package:evently/core/models/category.dart';
+import 'package:evently/firebase/firebase_database.dart';
+import 'package:evently/screens/event_management/event_details_screen.dart';
+import 'package:evently/screens/widgets/event_card.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+
+import '../../widgets/custom_tab_bar.dart';
 
 class HomeTab extends StatefulWidget {
   const HomeTab({super.key});
@@ -21,15 +28,71 @@ class _HomeTabState extends State<HomeTab> {
 
   @override
   void initState() {
-    allCategories.add(Category(Icons.border_all_rounded, 'all', 'الكل', 'All'));
-    allCategories.addAll(categories);
+    allCategories.add(
+      Category(Icons.border_all_rounded, 'all', 'الكل', 'All', '', ''),
+    );
+    allCategories.addAll(categoriesList);
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
     return SafeArea(
-      child: Column(children: [_buildHeader(), _buildTabBar(selectedIndex)]),
+      child: Column(
+        children: [
+          _buildHeader(),
+          CustomTabBar(
+            categories: allCategories,
+            selectedIndex: selectedIndex,
+            selectEvent: (int index) {
+              setState(() {
+                selectedIndex = index;
+              });
+            },
+          ),
+          Expanded(
+            child: StreamBuilder<QuerySnapshot<Event>>(
+              stream: FirebaseDatabase().getEventsStream(
+                category: selectedIndex == 0
+                    ? null
+                    : allCategories[selectedIndex].id,
+              ),
+              builder: (context, snapshot) {
+                if (snapshot.connectionState == .waiting) {
+                  return Center(child: CircularProgressIndicator());
+                }
+                if (snapshot.hasError) {
+                  return Center(child: Text(snapshot.error.toString()));
+                }
+                if (snapshot.hasData) {
+                  var event =
+                      snapshot.data?.docs.map((e) => e.data()).toList() ?? [];
+                  event.sort((a, b) => b.dateTime!.compareTo(a.dateTime!));
+                  if (event.isEmpty) {
+                    return Center(child: Text('no events found'));
+                  } else {
+                    return ListView.separated(
+                      padding: EdgeInsets.all(16),
+                      itemBuilder: (_, index) => GestureDetector(
+                        onTap: () {
+                          context.pushNamed(
+                            EventDetailsScreen.route,
+                            arguments: event[index],
+                          );
+                        },
+                        child: EventCard(event: event[index]),
+                      ),
+                      separatorBuilder: (_, _) => 16.verticalSpace,
+                      itemCount: event.length,
+                    );
+                  }
+                }
+                return SizedBox();
+              },
+            ),
+          ),
+        ],
+      ),
     );
   }
 
@@ -39,7 +102,10 @@ class _HomeTabState extends State<HomeTab> {
         Column(
           crossAxisAlignment: .start,
           children: [
-            Text(context.locale.welocmeBack , style: context.textTheme.titleMedium),
+            Text(
+              context.locale.welcomeBack,
+              style: context.textTheme.titleMedium,
+            ),
             Text(
               FirebaseAuth.instance.currentUser?.displayName ?? "User",
               style: context.textTheme.titleLarge,
@@ -88,62 +154,5 @@ class _HomeTabState extends State<HomeTab> {
         ),
       ],
     ).allPadding(16);
-  }
-
-  Widget _buildTabBar(int selectedIndex) {
-    return DefaultTabController(
-      length: allCategories.length,
-      child: TabBar(
-        tabAlignment: .start,
-        isScrollable: true,
-        indicatorColor: Colors.transparent,
-        dividerHeight: 0,
-        onTap: (index) {
-          setState(() {
-            this.selectedIndex = index;
-          });
-        },
-        indicatorSize: .label,
-        labelPadding: EdgeInsets.symmetric(horizontal: 8),
-        tabs: allCategories
-            .map(
-              (category) => Container(
-                padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(16),
-                  border: Border.all(
-                    color: context.colorScheme.primary,
-                    width: .6,
-                  ),
-                  color: selectedIndex == allCategories.indexOf(category)
-                      ? context.colorScheme.primary
-                      : context.colorScheme.onSecondary,
-                ),
-                child: Row(
-                  children: [
-                    Icon(
-                      category.icon,
-                      color: selectedIndex == allCategories.indexOf(category)
-                          ? Colors.white
-                          : context.colorScheme.primary,
-                    ),
-                    8.horizontalSpace,
-                    Text(
-                      context.appConfig.locale == 'en'
-                          ? category.nameEn
-                          : category.nameAr,
-                      style: context.textTheme.labelLarge!.copyWith(
-                        color: selectedIndex == allCategories.indexOf(category)
-                            ? Colors.white
-                            : context.colorScheme.secondary,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            )
-            .toList(),
-      ),
-    );
   }
 }

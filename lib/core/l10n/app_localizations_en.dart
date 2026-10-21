@@ -173,5 +173,20 @@ class AppLocalizationsEn extends AppLocalizations {
   String get profile => 'Profile';
 
   @override
-  String get welocmeBack => 'welocme Back ✨';
+  String get welcomeBack => 'Welcome Back ✨';
+
+  @override
+  String get user => 'User';
+
+  @override
+  String get email => 'Email';
+
+  @override
+  String get darkMode => 'Dark Mode';
+
+  @override
+  String get lightMode => 'Light Mode';
+
+  @override
+  String get signOut => 'Sign Out';
 }

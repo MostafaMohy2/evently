@@ -1,12 +1,14 @@
 import 'package:evently/core/config/app_config.dart';
 import 'package:evently/core/l10n/app_localizations.dart';
+import 'package:evently/core/utils/dialog_utils.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 extension BuildContextExtensions on BuildContext {
   // Provider / AppConfig
   AppConfig get appConfig => Provider.of<AppConfig>(this);
-  AppConfig get appConfigListenFalse => Provider.of<AppConfig>(this, listen: false);
+  AppConfig get appConfigListenFalse =>
+      Provider.of<AppConfig>(this, listen: false);
   T read<T>() => Provider.of<T>(this, listen: false);
   T watch<T>() => Provider.of<T>(this, listen: true);
 
@@ -47,8 +49,40 @@ extension BuildContextExtensions on BuildContext {
   }
 
   void showErrorSnackBar(String message) {
-    ScaffoldMessenger.of(this).showSnackBar(
-      SnackBar(content: Text(message)),
+    ScaffoldMessenger.of(this).showSnackBar(SnackBar(content: Text(message)));
+  }
+
+  void showDialogUtils({
+    String message = 'Loading',
+    bool barierDismissable = false,
+  }) {
+    final DialogUtils dialogUtils = DialogUtils();
+    dialogUtils.showAlertDialog(
+      this,
+      message: message,
+      barierDismissable: barierDismissable,
+    );
+  }
+
+  Future<void> showActionDialog({
+    String? message,
+    String? title,
+    String? postActionTitle,
+    Future<void> Function()? negativeAction,
+    Future<void> Function()? postAction,
+    String? negativeActionTitle,
+    bool barierDismissable = false,
+  }) async {
+    final DialogUtils dialogUtils = DialogUtils();
+    dialogUtils.showActionDialog(
+      this,
+      message: message,
+      title: title,
+      postActionTitle: postActionTitle,
+      postAction: postAction,
+      negativeAction: negativeAction,
+      negativeActionTitle: negativeActionTitle,
+      barierDismissable: barierDismissable,
     );
   }
 }

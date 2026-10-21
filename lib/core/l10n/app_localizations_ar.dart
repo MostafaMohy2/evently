@@ -173,5 +173,20 @@ class AppLocalizationsAr extends AppLocalizations {
   String get profile => 'الملف';
 
   @override
-  String get welocmeBack => 'مرحبا بعودتك ✨';
+  String get welcomeBack => 'مرحبًا بعودتك ✨';
+
+  @override
+  String get user => 'المستخدم';
+
+  @override
+  String get email => 'البريد الإلكتروني';
+
+  @override
+  String get darkMode => 'الوضع المظلم';
+
+  @override
+  String get lightMode => 'الوضع الفاتح';
+
+  @override
+  String get signOut => 'تسجيل الخروج';
 }
