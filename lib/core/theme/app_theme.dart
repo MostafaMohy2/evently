@@ -25,6 +25,15 @@ class AppTheme {
     ),
 
     scaffoldBackgroundColor: appColors.backgroundColor,
+    
+    bottomNavigationBarTheme: BottomNavigationBarThemeData(
+      backgroundColor: appColors.backgroundColor,
+      selectedItemColor: appColors.mainColor,
+      unselectedItemColor: appColors.mainTextColor,
+      showSelectedLabels: true,
+      showUnselectedLabels: true,
+      type: .fixed
+    ),
 
     filledButtonTheme: FilledButtonThemeData(
       style: FilledButton.styleFrom(

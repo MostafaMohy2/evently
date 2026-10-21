@@ -47,5 +47,14 @@
   "accountCreatedSuccessfully": "Account Created Successfully",
   "accountAlreadyExists": "The account already exists for that email.",
   "loggedInSuccessfully": "Logged In Successfully",
-  "passwordTooWeak": "The password provided is too weak."
+  "passwordTooWeak": "The password provided is too weak.",
+  "home":"Home",
+  "favorite": "Favorite",
+  "profile": "Profile",
+  "welcomeBack": "Welcome Back ✨",
+  "user": "User",
+  "email": "Email",
+  "darkMode": "Dark Mode",
+  "lightMode": "Light Mode",
+  "signOut": "Sign Out"
 }

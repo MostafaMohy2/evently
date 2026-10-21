@@ -1,11 +1,9 @@
+import 'package:evently/core/utils/build_context_extensions.dart';
 import 'package:evently/core/utils/validator.dart';
 import 'package:evently/firebase/auth_service.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 
-import '../../../core/config/app_config.dart';
-import '../../../core/l10n/app_localizations.dart';
 import '../../../core/utils/app_assets.dart';
 import '../../home/home_screen.dart';
 
@@ -44,8 +42,8 @@ class _SignupScreenState extends State<SignupScreen> {
 
   @override
   Widget build(BuildContext context) {
-    var provider = Provider.of<AppConfig>(context);
-    final AppLocalizations locale = AppLocalizations.of(context)!;
+    final provider = context.appConfig;
+    final locale = context.locale;
     var validator = Validator();
     return Scaffold(
       body: SafeArea(
@@ -62,7 +60,7 @@ class _SignupScreenState extends State<SignupScreen> {
                     provider.thememode == ThemeMode.light
                         ? AppAssets.logoLight
                         : AppAssets.logoDark,
-                    width: MediaQuery.of(context).size.width * .4,
+                    width: context.screenWidth * .4,
                   ),
                 ),
 
@@ -70,9 +68,7 @@ class _SignupScreenState extends State<SignupScreen> {
 
                 Text(
                   locale.createYourAccount,
-                  style: Theme.of(
-                    context,
-                  ).textTheme.titleLarge!.copyWith(fontWeight: .bold),
+                  style: context.textTheme.titleLarge!.copyWith(fontWeight: .bold),
                 ),
 
                 TextFormField(
@@ -155,28 +151,29 @@ class _SignupScreenState extends State<SignupScreen> {
                           passwordController.text,
                           nameController.text,
                         );
-                        ScaffoldMessenger.of(context).showSnackBar(
+                        if (!mounted) return;
+                        context.showSnackBar(
                           SnackBar(
                             content: Text(locale.accountCreatedSuccessfully),
                           ),
                         );
-                        Navigator.pop(context);
+                        context.pop();
                       } on FirebaseAuthException catch (e) {
+                        if (!mounted) return;
                         if (e.code == 'weak-password') {
-                          ScaffoldMessenger.of(context).showSnackBar(
+                          context.showSnackBar(
                             SnackBar(content: Text(locale.passwordTooWeak)),
                           );
                         } else if (e.code == 'email-already-in-use') {
-                          ScaffoldMessenger.of(context).showSnackBar(
+                          context.showSnackBar(
                             SnackBar(
                               content: Text(locale.accountAlreadyExists),
                             ),
                           );
                         }
                       } catch (e) {
-                        ScaffoldMessenger.of(
-                          context,
-                        ).showSnackBar(SnackBar(content: Text(e.toString())));
+                        if (!mounted) return;
+                        context.showSnackBar(SnackBar(content: Text(e.toString())));
                       } finally {
                         setState(() {
                           isLoading = false;
@@ -186,13 +183,11 @@ class _SignupScreenState extends State<SignupScreen> {
                   },
                   child: isLoading
                       ? CircularProgressIndicator(
-                          color: Theme.of(context).colorScheme.surface,
+                          color: context.colorScheme.surface,
                         )
                       : Text(
                           locale.signUp,
-                          style: Theme.of(
-                            context,
-                          ).textTheme.titleLarge!.copyWith(color: Colors.white),
+                          style: context.textTheme.titleLarge!.copyWith(color: Colors.white),
                         ),
                 ),
 
@@ -201,12 +196,12 @@ class _SignupScreenState extends State<SignupScreen> {
                   children: [
                     Text(
                       locale.alreadyHaveAnAccount,
-                      style: Theme.of(context).textTheme.bodyLarge,
+                      style: context.textTheme.bodyLarge,
                     ),
 
                     TextButton(
                       onPressed: () {
-                        Navigator.pop(context);
+                        context.pop();
                       },
                       child: Text(locale.login, style: TextStyle(fontSize: 16)),
                     ),
@@ -227,7 +222,8 @@ class _SignupScreenState extends State<SignupScreen> {
                 OutlinedButton(
                   onPressed: () async {
                     await authService.signInWithGoogle();
-                    Navigator.pushReplacementNamed(context, HomeScreen.route);
+                    if (!mounted) return;
+                    context.pushReplacementNamed(HomeScreen.route);
                   },
                   child: Row(
                     mainAxisAlignment: .center,

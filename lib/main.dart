@@ -12,6 +12,8 @@ import 'firebase_options.dart';
 import 'screens/auth/forget_password/forget_password_screen.dart';
 import 'screens/auth/login/login_screen.dart';
 import 'screens/auth/signup/signup_screen.dart';
+import 'screens/event_management/event_details_screen.dart';
+import 'screens/event_management/event_management_screen.dart';
 import 'screens/home/home_screen.dart';
 import 'screens/onboarding/on_boarding_screen.dart';
 
@@ -58,6 +60,8 @@ class MyApp extends StatelessWidget {
           LoginScreen.route: (_) => LoginScreen(),
           SignupScreen.route: (_) => SignupScreen(),
           ForgetPasswordScreen.route: (_) => ForgetPasswordScreen(),
+          EventManagementScreen.route: (_) => EventManagementScreen(),
+          EventDetailsScreen.route: (_) => const EventDetailsScreen(),
           HomeScreen.route: (_) => HomeScreen(),
         },
         initialRoute: SplashScreen.route,

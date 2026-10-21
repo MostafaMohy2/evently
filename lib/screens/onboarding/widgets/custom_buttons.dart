@@ -1,4 +1,5 @@
 import 'package:evently/core/config/app_config.dart';
+import 'package:evently/core/utils/build_context_extensions.dart';
 import 'package:flutter/material.dart';
 
 import '../../../core/theme/app_colors.dart';
@@ -20,7 +21,7 @@ class CustomButton extends StatelessWidget {
           borderRadius: BorderRadius.circular(8),
           border: Border.all(
             width: 2,
-            color: Theme.of(context).colorScheme.primary
+            color: context.colorScheme.primary
           )
       ),
       child: child,

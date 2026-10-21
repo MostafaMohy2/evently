@@ -47,5 +47,14 @@
   "accountCreatedSuccessfully": "تم إنشاء الحساب بنجاح",
   "accountAlreadyExists": "يوجد حساب بالفعل باستخدام هذا البريد الإلكتروني.",
   "loggedInSuccessfully": "تم تسجيل الدخول بنجاح",
-  "passwordTooWeak": "كلمة المرور التي تم إدخالها ضعيفة جدًا."
+  "passwordTooWeak": "كلمة المرور التي تم إدخالها ضعيفة جدًا.",
+  "home": "الرئيسية",
+  "favorite": "المفضلة",
+  "profile": "الملف",
+  "welcomeBack": "مرحبًا بعودتك ✨",
+  "user": "المستخدم",
+  "email": "البريد الإلكتروني",
+  "darkMode": "الوضع المظلم",
+  "lightMode": "الوضع الفاتح",
+  "signOut": "تسجيل الخروج"
 }

@@ -1,11 +1,9 @@
-import 'package:evently/core/l10n/app_localizations.dart';
+import 'package:evently/core/utils/build_context_extensions.dart';
 import 'package:evently/screens/onboarding/models/onboarding.dart';
 import 'package:evently/core/theme/app_colors.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
-import '../../core/config/app_config.dart';
 import '../../core/utils/app_assets.dart';
 import '../auth/login/login_screen.dart';
 import 'widgets/custom_buttons.dart';
@@ -26,8 +24,8 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
 
   @override
   Widget build(BuildContext context) {
-    var provider = Provider.of<AppConfig>(context);
-    final AppLocalizations locale = AppLocalizations.of(context)!;
+    final provider = context.appConfig;
+    final locale = context.locale;
     final onboards = Onboarding.onboarding(context);
     int lastPageIndex = onboards.length - 1;
 
@@ -58,7 +56,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                         provider: provider,
                         child: Icon(
                           Icons.arrow_back_ios_new_outlined,
-                          color: provider.thememode == ThemeMode.light
+                          color: provider.isLight
                               ? LightAppColors().mainTextColor
                               : DarkAppColors().mainTextColor,
                         ),
@@ -66,10 +64,10 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                     ),
                   ),
                   Image.asset(
-                    provider.thememode == ThemeMode.light
+                    provider.isLight
                         ? AppAssets.logoLight
                         : AppAssets.logoDark,
-                    width: MediaQuery.of(context).size.width * .4,
+                    width: context.screenWidth * .4,
                   ),
                   Visibility(
                     visible: pageIndex != lastPageIndex,
@@ -82,7 +80,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                         provider: provider,
                         child: Text(
                           locale.skip,
-                          style: Theme.of(context).textTheme.titleLarge,
+                          style: context.textTheme.titleLarge,
                         ),
                       ),
                     ),
@@ -102,7 +100,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                   controller: imgController,
                   itemBuilder: (context, index) {
                     return Image.asset(
-                      provider.thememode == ThemeMode.light
+                      provider.isLight
                           ? onboards[index].imageLight
                           : onboards[index].imageDark,
                     );
@@ -115,10 +113,10 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                   effect: ExpandingDotsEffect(
                     dotWidth: 7,
                     dotHeight: 7,
-                    activeDotColor: provider.thememode == ThemeMode.light
+                    activeDotColor: provider.isLight
                         ? LightAppColors().mainColor
                         : DarkAppColors().mainColor,
-                    dotColor: provider.thememode == ThemeMode.light
+                    dotColor: provider.isLight
                         ? LightAppColors().disabledColor
                         : DarkAppColors().mainTextColor,
                   ),
@@ -143,12 +141,14 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                           alignment: .centerStart,
                           child: Text(
                             onboards[index].title,
-                            style: Theme.of(context).textTheme.titleLarge,
+                            style: context.textTheme.titleLarge,
                           ),
                         ),
-                        Text(
-                          onboards[index].description,
-                          style: Theme.of(context).textTheme.bodyLarge,
+                        Expanded(
+                          child: Text(
+                            onboards[index].description,
+                            style: context.textTheme.bodyLarge,
+                          ),
                         ),
                       ],
                     );
@@ -167,14 +167,12 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                       curve: Curves.easeInOut,
                     );
                   } else {
-                    Navigator.pushReplacementNamed(context, LoginScreen.route);
+                    context.pushReplacementNamed(LoginScreen.route);
                   }
                 },
                 child: Text(
                   pageIndex == lastPageIndex ? locale.getStarted : locale.next,
-                  style: Theme.of(
-                    context,
-                  ).textTheme.titleLarge!.copyWith(color: Colors.white),
+                  style: context.textTheme.titleLarge!.copyWith(color: Colors.white),
                 ),
               ),
             ],
